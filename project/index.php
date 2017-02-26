@@ -7,9 +7,7 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(50) NOT NULL,
   `id` int(2) NOT NULL AUTO_INCREMENT,
-  `password` varchar(20) NOT NULL,
-  `moderator` tinyint(1) DEFAULT 0,
-  PRIMARY KEY (`id`)
+  `password` varchar(20) NOT NULL, PRIMARY KEY (`id`)
 )
 
 --use this to hardcode the moderator
@@ -177,8 +175,8 @@ else if($action=='login')   // it checks whether the user clicked login button o
 		<form method="post" action="index.php" name="add_user">
 			Username: <input type="text" name="name" id="add_name" /> <br/>
 			Email: <input type="text" name="email" id="add_email" /> <br/>
-			Password: <input type="text" name="password" id="pass1" /> <br/>
-			Password (again): <input type="text" id="pass2" onKeyUp="check_pass()"/>
+			Password: <input type="password" name="password" id="pass1" /> <br/>
+			Password (again): <input type="password" id="pass2" onKeyUp="check_pass()"/>
 			
 			<div id="pass_same" style="display:inline;">&nbsp;</div>
 			<input type="hidden" name="action" value="add_user" /> <br/>
@@ -191,7 +189,7 @@ else if($action=='login')   // it checks whether the user clicked login button o
 		Login: 
 		<form method="post" action="index.php" name="login">
 			Username: <input type="text" name="name" /> <br/>
-			Password: <input type="text" name="password" /> <br/>
+			Password: <input type="password" name="password" /> <br/>
 			<input type="hidden" name="action" value="login" />
 			<input type="Submit" value="Go"/>
 
