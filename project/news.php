@@ -59,7 +59,7 @@ INSERT INTO `stories` (`id`, `title`, `date1`, `story`, `approved`, `submitted_b
      			// output data of each row
      			while($row = mysql_fetch_assoc($result)) {
      				if($row["approved"] == 1) {
-         			//story ouput__ These methods are made obsolete  by the table output method I added below
+         			//story ouput__ These methods are made obsolete by the table output method I added below
          			//echo "<br/>". "<br/>" . $row["title"]. "<br>" . "By " . $row["submitted_by"]. "<br>" . $row["date1"] . "<br>" . $row["story"] ."<br/>". "<br/>";
          			//output the picture with each story
      				//echo '<img src="', $dir, '/', $row["photo"], '" alt="photo" />';

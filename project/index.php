@@ -1,6 +1,6 @@
 <?php
 /*
---Create Database Amazion in phpmyadmin
+--Create Database amazion in phpmyadmin
 
 --use this to make the users table
 
