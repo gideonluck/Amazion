@@ -10,10 +10,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(20) NOT NULL, PRIMARY KEY (`id`)
 )
 
---use this to hardcode the moderator
-
-INSERT INTO users(name, id, password, Moderator) 
-VALUES('admin',NULL,'1234' ,1)
+INSERT INTO users(name, id, password) 
+VALUES('admin',NULL,'1234')
 
 
 /**************************
@@ -83,17 +81,11 @@ else if($action=='login')   // it checks whether the user clicked login button o
 	$num_rows = mysqli_num_rows($result);
 	if ($num_rows > 0) {
 		$row = $result->fetch_assoc();
-		if($row["password"] == $password && $row['Moderator']==1){
+		if($row["password"] == $password){
 			$_SESSION['use']=$user;
 			echo "<h2>User $name logged in!";
 			$loggedin=true;
-			header('Location:modnews.php');
-		}
-		else if ($row["password"] == $password && $row['Moderator']==0){
-			$_SESSION['use']=$user;
-			echo "<h2>User $name logged in!";
-			$loggedin=true;
-			header('Location:news.php');
+			header('Location:homepage.php');
 		}
 		else{
 	  		echo "<h2>Invalid UserName or Password</h2";
@@ -157,7 +149,7 @@ else if($action=='login')   // it checks whether the user clicked login button o
 	</head>
 	<body>
 
-		<h1> Welcome to I<3 NEWS!</h1>
+		<h1> Welcome to Amazion</h1>
 		<h2>Please login or sign up to continue</h2>
 		<?php
 
