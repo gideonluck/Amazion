@@ -1,6 +1,6 @@
 <?php
 /*
---Create Database user in phpmyadmin
+--Create Database Amazion in phpmyadmin
 
 --use this to make the users table
 
