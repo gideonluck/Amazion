@@ -71,7 +71,7 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
     			die("Database selection failed: " . mysql_error());
 			}
 
-			$sql = "SELECT SKU, MODEL, Vendor, Type, Description, photo FROM items";
+			$sql = "SELECT SKU, MODEL, Vendor, Type, Description, Photo FROM items";
 
 			$result = mysql_query("select * from items");;
 			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
