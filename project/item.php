@@ -70,6 +70,7 @@
 				</div>
 					<?php
      				}
+		}
 					?>
 </body>
 </html>
