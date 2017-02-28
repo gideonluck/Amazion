@@ -74,6 +74,7 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		      console.log("dropping: " + data);
 		    }
 		    </script>
+
 		<?php
 			$link =  mysql_connect("localhost","root","");
 
@@ -93,13 +94,20 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 			$result = mysql_query("select * from items");;
 			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
 			
+			?>
+
+			<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="CartText"> Shopping cart </p>
+			</div>
+
+			<?php
 		while($row = mysql_fetch_assoc($result)) {
      				//if($row["approved"] == 1)
      				?>
-     			<div id="dragdiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+     			<div id="dragdiv" ondrop="drop(event)">
      				<table border="1" draggable="true" id="t1" ondragstart="drag(event)">
 					<tr>
-						<td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td>
+						<!-- <td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td> -->
 					</tr>
 					<tr>
 						<td colspan="2"><?php echo $row["MODEL"];?></td>
@@ -112,12 +120,8 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 					</tr>
 					</table>
 				</div>
-				<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-				</div>
 					<?php
      				}
-
-		?>
+					?>
 	</body>
 </html>

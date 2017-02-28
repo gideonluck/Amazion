@@ -58,16 +58,21 @@ tr, td{
     text-align: left;
 
 }
-
 #stories{
     border-collapse: collapse;
     margin: 35px;
 }
 #ShopCart{
   float: right;
-  width: 100px;
-  height: 35px;
+  width: 200px;
+  height: 200px;
   margin: 10px;
   padding: 10px;
-  border: 1px solid black;
+  border: 2px solid black;
+}
+#CartText{
+    font-family: 'Courier';
+    font-style:'Bold';
+    font-size: 22pt;
+    text-align:'center';
 }
