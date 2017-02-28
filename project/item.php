@@ -31,7 +31,7 @@
 
 			$result = mysql_query("select * from items");;
 			$dir = '/project/img'; 
-			$item = 0; //THIS WILL NEED TO BE THE SKU FROM OTHER PAGE
+			$item = 1; //THIS WILL NEED TO BE THE SKU FROM OTHER PAGE
 			
 		while($row = mysql_fetch_assoc($result)) 
 		{
@@ -55,7 +55,6 @@
 				<?php
 			}
 		}
-
-
-
+		?>
+</body>
 </html>

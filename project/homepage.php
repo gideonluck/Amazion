@@ -57,24 +57,6 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		<form id='logout' method="LINK" action="index.php">
 			<input type="submit" value="Log Out">
 		</form>
-
-		    <script>
-		    function allowDrop(ev) {
-		      ev.preventDefault();
-		    }
-		    function drag(ev) {
-		      ev.dataTransfer.setData("text", ev.target.id);
-		      console.log("dragging: " + ev.target.id);
-		    }
-		    function drop(ev) {
-		      ev.preventDefault();
-		      var data = ev.dataTransfer.getData("text");
-		      // ev.target.appendChild(document.getElementById(data));
-		      alert("Item added to Cart")
-		      console.log("dropping: " + data);
-		    }
-		    </script>
-
 		<?php
 			$link =  mysql_connect("localhost","root","");
 
@@ -107,7 +89,7 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
      			<div id="dragdiv" ondrop="drop(event)">
      				<table border="1" draggable="true" id="t1" ondragstart="drag(event)">
 					<tr>
-						<!-- <td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td> -->
+						<!-- <td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td>  -->
 					</tr>
 					<tr>
 						<td colspan="2"><?php echo $row["MODEL"];?></td>
