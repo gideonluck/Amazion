@@ -118,6 +118,13 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 					<tr>
 						<td colspan="2"><?php echo $row["Type"];?></td>
 					</tr>
+					<tr>
+						<form method="LINK" action="item.php">
+     						 <input type="submit" value="More Information">
+     						 
+
+    					</form> <!-- make it carry the SKU value -->
+					</tr>
 					</table>
 				</div>
 					<?php
