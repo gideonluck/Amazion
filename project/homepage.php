@@ -2,7 +2,7 @@
 
 <!-- /*
 
-Database: `user`
+Database: `amazion`
 
 Table structure for table `items`
 
