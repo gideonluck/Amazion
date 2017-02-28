@@ -35,14 +35,45 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		<title>Amazion</title>
 		<link href='css/login_style.css' type='text/css' rel='stylesheet' />
 		<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
-
+		<script>
+		    function allowDrop(ev) {
+		      ev.preventDefault();
+		    }
+		    function drag(ev) {
+		      ev.dataTransfer.setData("text", ev.target.id);
+		      console.log("dragging: " + ev.target.id);
+		    }
+		    function drop(ev) {
+		      ev.preventDefault();
+		      var data = ev.dataTransfer.getData("text");
+		      // ev.target.appendChild(document.getElementById(data));
+		      alert("Item added to Cart")
+		      console.log("dropping: " + data);
+		    }
+		</script>
 	</head>
 	<body>
-
 		<h1>Amazion</h1>
 		<form id='logout' method="LINK" action="index.php">
 			<input type="submit" value="Log Out">
 		</form>
+
+		    <script>
+		    function allowDrop(ev) {
+		      ev.preventDefault();
+		    }
+		    function drag(ev) {
+		      ev.dataTransfer.setData("text", ev.target.id);
+		      console.log("dragging: " + ev.target.id);
+		    }
+		    function drop(ev) {
+		      ev.preventDefault();
+		      var data = ev.dataTransfer.getData("text");
+		      // ev.target.appendChild(document.getElementById(data));
+		      alert("Item added to Cart")
+		      console.log("dropping: " + data);
+		    }
+		    </script>
 		<?php
 			$link =  mysql_connect("localhost","root","");
 
@@ -65,9 +96,10 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		while($row = mysql_fetch_assoc($result)) {
      				//if($row["approved"] == 1)
      				?>
-     				<table border="1">
+     			<div id="dragdiv" ondrop="drop(event)" ondragover="allowDrop(event)">
+     				<table border="1" draggable="true" id="t1" ondragstart="drag(event)">
 					<tr>
-						<td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" />';?></td>
+						<td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td>
 					</tr>
 					<tr>
 						<td colspan="2"><?php echo $row["MODEL"];?></td>
@@ -79,6 +111,10 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 						<td colspan="2"><?php echo $row["Type"];?></td>
 					</tr>
 					</table>
+				</div>
+				<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+				</div>
 					<?php
      				}
 
