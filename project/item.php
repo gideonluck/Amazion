@@ -32,6 +32,8 @@
 			$result = mysql_query("select * from items");;
 			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
 			
+			$item = 1; //NEEDS TO BE THE AJAX SKU FROM PREVIOUS PAGE
+
 			?>
 
 			<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
