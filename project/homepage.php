@@ -70,6 +70,15 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		      // ev.target.appendChild(document.getElementById(data));
 		      alert("Item added to Cart")
 		      console.log("dropping: " + data);
+		$.ajax(
+	                url: "update.php",
+	                type: "POST",
+	                data: { 'id': id, 'SKU': SKU },                   
+	                success: function()
+                    {
+                        alert("Item added to Cart");                                    
+                    }
+            		);
 		    }
 		</script>
 	</head>
