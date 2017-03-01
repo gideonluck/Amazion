@@ -20,8 +20,6 @@ VALUES('admin',NULL,'1234');
 *
 ***************************/
 
-
-
 $link = new mysqli("localhost","root","","amazion");
 
 
@@ -36,7 +34,7 @@ session_start();
 
 if(isset($_SESSION['use']))   // Checking whether the session is already there or                          // true then header redirect it to the home page directly 
 	{
-		header("Location:news.php"); 
+		header("Location:homepage.php"); 
 	}
 else
 	$action='none';

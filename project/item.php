@@ -1,13 +1,14 @@
+<?php
+session_start();
+?>
 <html>
-
-<head>
+	<head>
 		<title>Amazion</title>
 		<link href='css/login_style.css' type='text/css' rel='stylesheet' />
 		<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
-
 	</head>
-	<body>
 
+	<body>
 		<h1>Amazion</h1>
 		<form id='logout' method="LINK" action="index.php">
 			<input type="submit" value="Log Out">

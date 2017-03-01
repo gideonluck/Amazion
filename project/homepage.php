@@ -1,5 +1,8 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
-
 <!-- /*
 
 Database: `user`
@@ -25,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `cart` (
   PRIMARY KEY (`id`)
 )
 
-
 --Table structure for table `wishlist`
 
 CREATE TABLE IF NOT EXISTS `wishlist` (
@@ -43,8 +45,6 @@ CREATE TABLE IF NOT EXISTS `review` (
   `review` varchar(140) NOT NULL,
   PRIMARY KEY (`id`)
 )
-
-
 
 INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) VALUES
 (1, 'Quadcopter 2000', 'Apple', 'Indoor/Outdoor', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis diam at erat auctor luctus. Donec lobortis mattis metus, ac lobortis tellus aliquet et. Nullam mattis dictum elit, vel auctor enim sagittis a. Aenean at odio rhoncus, volutpat felis et, vestibulum nulla. Curabitur vulputate consectetur massa, eget imperdiet orci vulputate elementum. Pellentesque imperdiet feugiat odio, eget aliquet ligula faucibus et.', 'quad1.jpg');
@@ -68,16 +68,17 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		      ev.preventDefault();
 		      var data = ev.dataTransfer.getData("text");
 		      // ev.target.appendChild(document.getElementById(data));
-		      alert("Item added to Cart")
+		      //alert("Item added to Cart")
 		      console.log("dropping: " + data);
-		$.ajax(
+				
+				$.ajax(
 	                url: "update.php",
 	                type: "POST",
 	                data: { 'id': id, 'SKU': SKU },                   
 	                success: function()
-                    {
-                        alert("Item added to Cart");                                    
-                    }
+	                    {
+	                        alert("Item added to Cart");                                    
+	                    }
             		);
 		    }
 		</script>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 	$link =  mysql_connect("localhost","root","");
 
 		if (!$link) {
@@ -14,5 +16,6 @@
 
 	$SKU = $_POST['SKU'];
 	$id = $_POST['id']; 
-	$sql = "UPDATE id, SKU FROM cart";
+	$sql = "INSERT INTO cart(id, SKU) VALUES('id','SKU')";
+
 ?>
