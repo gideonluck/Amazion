@@ -14,9 +14,9 @@ session_start();
 			die("Database selection failed: " . mysql_error());
 		}
 
-	$SKU = $_POST['SKU'];
-	$name = $_POST['name']; 
-	$id = "SELECT id FROM users WHERE name=$name"
+	$SKU = $mysqli->real_escape_string($_POST["SKU"]);
+	$name = $mysqli->real_escape_string($_POST["name"]);
+	$id = "SELECT id FROM users WHERE name LIKE '".$name."%'";
 	$sql = "INSERT INTO cart(id, SKU) VALUES('$id','$SKU')";
 
 ?>
