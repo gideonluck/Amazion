@@ -111,7 +111,7 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 			$sql = "SELECT SKU, MODEL, Vendor, Type, Description, Photo FROM items";
 
 			$result = mysql_query("select * from items");;
-			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
+			$dir = '/Amazion/project/img';
 			
 			?>
 
