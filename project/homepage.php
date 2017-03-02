@@ -88,6 +88,12 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 		<form id='logout' method="LINK" action="index.php">
 			<input type="submit" value="Log Out">
 		</form>
+		<form method="LINK" action="shoppingcart.php">
+			<input type="submit" value="Shopping Cart">
+		</form>
+		<form method="LINK" action="wishlist.php">
+			<input type="submit" value="Wishlist">
+		</form>
 		<?php
 			$link =  mysql_connect("localhost","root","");
 
