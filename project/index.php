@@ -8,10 +8,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(50) NOT NULL,
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `password` varchar(20) NOT NULL, PRIMARY KEY (`id`)
-)
+);
 
 INSERT INTO users(name, id, password) 
-VALUES('admin',NULL,'1234')
+VALUES('admin',NULL,'1234');
 
 
 /**************************
@@ -20,9 +20,7 @@ VALUES('admin',NULL,'1234')
 *
 ***************************/
 
-
-
-$link = new mysqli("localhost","root","","user");
+$link = new mysqli("localhost","root","","amazion");
 
 
 if ($link->connect_errno) {
@@ -36,7 +34,7 @@ session_start();
 
 if(isset($_SESSION['use']))   // Checking whether the session is already there or                          // true then header redirect it to the home page directly 
 	{
-		header("Location:news.php"); 
+		header("Location:homepage.php"); 
 	}
 else
 	$action='none';
@@ -51,9 +49,9 @@ if($action=='add_user')
 {
 	$name = $_POST["name"];
 	$password = $_POST["password"];
-
 	$name = htmlentities($link->real_escape_string($name));
 	$password = htmlentities($link->real_escape_string($password));
+	$password = crypt ($password,"ilovetacos");
 	$result = $link->query("INSERT INTO users (name, password) VALUES ('$name', '$password')");
 
 	if(!$result){
@@ -73,6 +71,7 @@ else if($action=='login')   // it checks whether the user clicked login button o
     $password = $_POST['password'];
     $name = htmlentities($link->real_escape_string($name));
 	$password = htmlentities($link->real_escape_string($password));
+	$password = crypt ($password,"ilovetacos");
 	$result = $link->query("SELECT * FROM users WHERE name='$name'");
 
 	if(!$result)
@@ -94,7 +93,6 @@ else if($action=='login')   // it checks whether the user clicked login button o
     else{
     	echo '<h2>No users created</h2>';} 
 }
-  
 ?>
 
 
