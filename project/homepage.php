@@ -92,11 +92,10 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 			$.ajax({
                 url: "update.php",
                 type: "POST",
-                data: { 'id': $_SESSION["user"], 'SKU': $row[SKU] },                   
-                success: function()
-		                {
+                data: { 'name': $_SESSION['user'], 'SKU': $row[SKU] },                   
+                .done(function() {
 		                	alert("Item added to Cart");             
-		                }
+		                })
 				});
 	    }
 	</script>

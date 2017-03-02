@@ -32,7 +32,7 @@ $loggedin=false;
 // session starts with the help of this function 
 session_start();
 
-if(isset($_SESSION['use']))   // Checking whether the session is already there or                          // true then header redirect it to the home page directly 
+if(isset($_SESSION['user']))   // Checking whether the session is already there or                          // true then header redirect it to the home page directly 
 	{
 		header("Location:homepage.php"); 
 	}
@@ -81,7 +81,7 @@ else if($action=='login')   // it checks whether the user clicked login button o
 	if ($num_rows > 0) {
 		$row = $result->fetch_assoc();
 		if($row["password"] == $password){
-			$_SESSION['use']=$user;
+			$_SESSION['user']=$user;
 			echo "<h2>User $name logged in!";
 			$loggedin=true;
 			header('Location:homepage.php');

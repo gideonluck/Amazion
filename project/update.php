@@ -15,7 +15,8 @@ session_start();
 		}
 
 	$SKU = $_POST['SKU'];
-	$id = $_POST['id']; 
+	$name = $_POST['name']; 
+	$id = "SELECT id FROM users WHERE name=$name"
 	$sql = "INSERT INTO cart(id, SKU) VALUES('$id','$SKU')";
 
 ?>
