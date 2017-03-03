@@ -1,69 +1,128 @@
 <?php
 session_start();
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 			<title>Amazion Wishlist</title>
+			<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 			<link href='login_style.css' type='text/css' rel='stylesheet' />
 			<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
+				<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 	</head>
 
 
-	<header>
-		<h1>Amazion</h1>
-			<nav>
-			    <ol>
-			        <li>Home</li>
-			        <li>Shopping Cart</li>
-			        <li>Wishlist</li>
-			    </ol>
-			</nav>
+		<body>
+		<header>
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="homepage.php" class="navbar-brand">AMAZION</a>
+			</div>
+
+			<!--MENU ITEMS -->
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="homepage.php">Home</a></li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Types of Quadcopters <span class="caret"> </span></a>
+						<ul class="dropdown-menu">
+							<li><a>Aerial Cinematography</a></li>
+							<li><a>Social and Sport</a></li>
+							<li><a>Mini Drone</a></li>
+							<li><a>FPV Quadcopter</a></li>
+						</ul>
+					</li>
+
+					<li><a href="shoppingcart.php">Shopping Cart</a></li>
+					<li class="active"><a href="wishlist.php">Wishlist</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 		</header>
 
-
-		
-		<body>
-		<form id='logout' method="LINK" action="index.php">
+		<h3> My Wishlist </h3>
+		<div align='right'>
+		<form id='logout' method="LINK" action="logout.php">
 			<input type="submit" value="Log Out">
 		</form>
-		<h2> My Wishlist </h2>
+		</div>
 		<?php
-			$link =  mysql_connect("localhost","root","");
+			$link =  mysqli_connect("localhost","root","","amazion");
 
 			if (!$link) {
-    			printf("Connect failed: %s\n", mysql_error());
+    			printf("Connect failed: %s\n", mysqli_error());
     			exit();
 			}
 
-			$db_selected = mysql_select_db("amazion", $link);
+			
+			$item = $_POST["item"];
+			$id = $_SESSION["id"];
+			$sqlADD = "INSERT INTO wishlist (userid, SKU) VALUES ('$id','$item')";
 
-			if (!$db_selected) {
-    			die("Database selection failed: " . mysql_error());
-			}
 
-			$sql = "SELECT SKU, id FROM wishlist";
+			$sql = "SELECT SKU, userid, id FROM wishlist";
 
-			$result = mysql_query("select * from wishlist");;
+			$result = mysqli_query($link,"select * from wishlist");;
 			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
 			
-			$sql2 = "SELECT SKU, MODEL, Vendor, Type, Description, Photo, FROM items";
-			$result2 = mysql_query("select * from items");;
+			$sql2 = "SELECT id, sku, model, vendor, operator, size, weight, flight_time, range, msrp, speed, gimbal, video, camera, feature, image FROM items";
+			$result2 = mysqli_query($link,"select * from items");;
 
 			?>
 
 			<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<p id="CartText"> Shopping cart </p>
+			<center><p id="CartText"> Shopping Cart </p></center>
 			</div>
 
 			<?php	
-		while($row = mysql_fetch_assoc($result)) 
+		while($row = mysqli_fetch_assoc($result)) 
 		{
-			while($row2 = mysql_fetch_assoc($result2))
+			while($row2 = mysqli_fetch_assoc($result2))
 			{
-				if($row["SKU"] == $row2["SKU"])
+				if(($row["SKU"] == $row2["sku"]) && ($_SESSION['id'] == $row['userid']))
 				{
 					?>
      				<div id="dragdiv" ondrop="drop(event)">
+		 				<table border="1" draggable="true" id="t1" ondragstart="drag(event)" class="table-condensed">
+		 				<thead>
+						<tr>
+							<td><?php echo '<img src="', $dir, '/', $row2["image"], '" alt="Photo" width="200" height="150" />';?></td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td colspan="2"><?php echo $row2["model"];?></td>
+						</tr>
+						<tr>
+							<td colspan="2"><?php echo $row2["vendor"];?></td>
+						</tr>
+						<tr>
+							<td colspan="2"><?php echo $row2["operator"];?></td>
+						</tr>
+						</tbody>
+
+						</table>
+							<!--<form method="LINK" action="item.php">
+		 						 <input type="submit" value="More Information">
+							</form>--> <!-- make it carry the SKU value -->
+					</div>
+
+
+
+     				<!--<div id="dragdiv" ondrop="drop(event)">
 		 				<table border="1" draggable="true" id="t1" ondragstart="drag(event)">
 						<tr>
 							<td><?php echo '<img src="', $dir, '/', $row2["Photo"], '" alt="Photo" width="200" height="150" />';?></td>
@@ -84,7 +143,7 @@ session_start();
 							<td colspan="2"><?php echo $row2["Description"];?></td>
 						</tr>
 						</table>
-					</div>
+					</div>-->
 					<?php
 				}
 			}

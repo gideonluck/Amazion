@@ -1,0 +1,8 @@
+sku,model,vendor,operator,size,weight,flight_time,range,msrp,speed,gimbal,video,camera,feature,image
+D003,Phantom 3,DJI,single,350,1216,25,5,999,57,3-axis,,12 mp,,Phantom_3.jpg
+D004,Phantom 4,DJI,single,350,1380,28,5,1199,72,3-axis,,12.4 mp,,Phantom_4.jpg
+D005,Phantom 4 Pro,DJI,single,350,1288,30,7,1499,72,3-axis,4k 60fps,20 mp,"obstacle sensing,",Phantom_4_Pro.jpg
+D006,Inspire 1,DJI,dual,581,2845,18,7,1999,79,3-axis,4k 60fps,12.4 mp,"sensing, RTH",Inspire_1.jpg
+D007,Inspire 1 Pro,DJI,dual,581,2968,18,7,3399,79,3-axis,4k 60fps,16 mp,,Inspire_1_Pro.jpg
+D008,Inspire 2,DJI,dual,605,3290,27,7,2999,94,3-axis,4k 60fps,16 mp,,Inspire_2.jpg
+D009,Mavic,DJI,single,335,734,27,7,999,65,3-axis,4k,12 mp,,Mavic.jpg
