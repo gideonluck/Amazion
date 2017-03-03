@@ -61,23 +61,15 @@ session_start();
 
 
 		<?php
-			$link =  mysql_connect("localhost","root","");
+			$link =  mysqli_connect("localhost","root","","amazion");
 
-			if (!$link) {
-    			printf("Connect failed: %s\n", mysql_error());
-    			exit();
-			}
 
-			$db_selected = mysql_select_db("amazion", $link);
 
-			if (!$db_selected) {
-    			die("Database selection failed: " . mysql_error());
-			}
+			$sql = "SELECT id, sku, model, vendor, operator, size, weight, flight_time, range1, msrp, speed, gimbal, video, camera, feature, image FROM items";
 
-			$sql = "SELECT id, sku, model, vendor, operator, size, weight, flight_time, range, msrp, speed, gimbal, video, camera, feature, image FROM items";
+			$result = mysqli_query($link,$sql);
 
-			$result = mysql_query("select * from items");;
-			$dir = '/Amazion-master/project/img'; /*MAY BE WRONG!!!!!*/
+			$dir = '/Amazion-master/project/img'; 
 			if(isset($_POST['item'])){
 				$item = $_POST['item']; 
 
@@ -92,7 +84,7 @@ session_start();
 			</div>
 
 			<?php	
-		while($row = mysql_fetch_assoc($result)) 
+		while($row = mysqli_fetch_assoc($result)) 
 		{
 			if ($row["sku"] == $item)
 			{
@@ -157,53 +149,11 @@ session_start();
 		?>
 
 
-		<?php
-		//REVIEWS
-			/*$link =  mysql_connect("localhost","root","");
 
-			if (!$link) {
-    			printf("Connect failed: %s\n", mysql_error());
-    			exit();
-			}
-
-			$db_selected = mysql_select_db("amazion", $link);
-
-			if (!$db_selected) {
-    			die("Database selection failed: " . mysql_error());
-			}*/
-			function reviewProcessing() {
-    			$uploadOk = 1;
-				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-				move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-
-				$link = mysql_connect("localhost","root","");
-				if (!$link) {
-				printf("Connect failed: %s\n", mysql_error());
-				exit();
-				}
-				$db_selected = mysql_select_db("amazion", $link);
-				if (!$db_selected) {
-				die("Database selection failed: " . mysql_error());
-				}
-
-				$user = $_POST['username'];
-				$rate = $_POST['rate'];
-				$review = $_POST['review'];
-				$id = 1; //not sure about this
-
-
-				$sql = "INSERT INTO review (id, user, rate, review) VALUES ('$id', '$user', '$rate', '$review')";
-
-				if (!mysql_query($sql)) {
-				die('Error: ' . mysql_error());
-				}
-				mysql_close();
-			}
-		?>
 		<footer>
 
 	<h3>Submit a Review</h3>
-		<form method="post" action="reviewProcessing()" name="add_review" enctype="multipart/form-data">
+		<form method="post" action="reviewProcessing.php" name="add_review" enctype="multipart/form-data">
 
 			Username: <input type="text" name="user" id="add_name" /> <br/>
 			Rating:<input type="text" name="rate" id="add_rate" /> <br/>
@@ -215,13 +165,12 @@ session_start();
            
            <?php
 
-			$sql = "SELECT id, user, rate, review FROM review";
+			$sql = "SELECT * FROM review";
 
-			$result = mysql_query("select * from review");;
+			$result = mysqli_query($link,$sql);
 			
 
-		if($row !=0){
-		while($row = mysql_fetch_assoc($result)) 
+		while($row = mysqli_fetch_assoc($result)) 
 		{
 				?>
 <!-- 				<blockquote>
@@ -244,7 +193,7 @@ session_start();
 					</table>
 				</div>
 					<?php
-		}}
+		}
 		?>
 </footer>
 	</body>

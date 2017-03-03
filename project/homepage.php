@@ -161,9 +161,9 @@ if (!$result) {
 
 
 
-	$sql = "SELECT id, sku, model, vendor, operator, size, weight, flight_time, range, msrp, speed, gimbal, video, camera, feature, image FROM items";
+	$sql = "SELECT id, sku, model, vendor, operator, size, weight, flight_time, range1, msrp, speed, gimbal, video, camera, feature, image FROM items";
 
-	$result = mysqli_query($link,"select * from items");
+	$result = mysqli_query($link,$sql);
 	$dir = '/Amazion/project/img';
 	
 ?>
@@ -256,7 +256,8 @@ if (!$result) {
 		</form>
 		</div>
 	<?php
-	while($row = mysqli_fetch_assoc($result)) {
+	while($row = mysqli_fetch_assoc($result)) 
+	{
 	?>
 
  			<div id="dragdiv" ondrop="drop(event)">
