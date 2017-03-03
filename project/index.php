@@ -1,4 +1,4 @@
-i<?php
+<?php
 /*
 --Create Database amazion in phpmyadmin
 
@@ -100,6 +100,13 @@ else if($action=='login')   // it checks whether the user clicked login button o
 		<title>Welcome</title>
 		<link href='login_style.css' type='text/css' rel='stylesheet' />
 		<link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 		<script>
 
@@ -146,9 +153,40 @@ else if($action=='login')   // it checks whether the user clicked login button o
 	</head>
 	
 	<header>
-		<h1> Welcome to Amazion</h1>
-	</header>
+	<center>
+		
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="homepage.php" class="navbar-brand">AMAZION</a>
+			</div>
+
+			<!--MENU ITEMS -->
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Types of Quadcopters <span class="caret"> </span></a>
+						<ul class="dropdown-menu">
+							<li><a>Aerial Cinematography</a></li>
+							<li><a>Social and Sport</a></li>
+							<li><a>Mini Drone</a></li>
+							<li><a>FPV Quadcopter</a></li>
+						</ul>
+					</li>
+
+					<li ><a href="#">Shopping Cart</a></li>
+					<li ><a href="#">Wishlist</a></li>
+				</ul>
+
+
+
+			</div>
+		</div>
+	</nav>	</header>
 	<body>
+	<div align='left'>
 		<h2>Please login or sign up to continue</h2>
 		<?php
 
@@ -160,8 +198,9 @@ else if($action=='login')   // it checks whether the user clicked login button o
 			}
 
 		?>
+		</br>
 		<div id='form1'>
-
+		</br>
 		New User: 
 		<form method="post" action="index.php" name="add_user">
 			Username: <input type="text" name="name" id="add_name" /> <br/>
@@ -187,7 +226,7 @@ else if($action=='login')   // it checks whether the user clicked login button o
 		</form>
 
 	
-
+</div>
 		</div>
 		<br/>
 	</body>
