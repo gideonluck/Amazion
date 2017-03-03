@@ -1,4 +1,4 @@
-<?php
+i<?php
 /*
 --Create Database amazion in phpmyadmin
 
@@ -32,7 +32,7 @@ $loggedin=false;
 // session starts with the help of this function 
 session_start();
 
-if(isset($_SESSION['user']))   // Checking whether the session is already there or                          // true then header redirect it to the home page directly 
+if(isset($_SESSION['user']))   // Checking whether the session is already there or true then header redirect it to the home page directly 
 	{
 		header("Location:homepage.php"); 
 	}
@@ -62,8 +62,6 @@ if($action=='add_user')
 	}
 
 }
-
-
 
 else if($action=='login')   // it checks whether the user clicked login button or not 
 {
@@ -100,8 +98,9 @@ else if($action=='login')   // it checks whether the user clicked login button o
 <html>
 	<head>
 		<title>Welcome</title>
-		<link href='css/login_style.css' type='text/css' rel='stylesheet' />
+		<link href='login_style.css' type='text/css' rel='stylesheet' />
 		<link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet" />
+
 		<script>
 
 			function validate()
@@ -145,9 +144,11 @@ else if($action=='login')   // it checks whether the user clicked login button o
 			}
 		</script>
 	</head>
-	<body>
-
+	
+	<header>
 		<h1> Welcome to Amazion</h1>
+	</header>
+	<body>
 		<h2>Please login or sign up to continue</h2>
 		<?php
 

@@ -3,9 +3,19 @@ session_start();
 ?>
 <html>
 	<head>
-		<title>Amazion</title>
-		<link href='css/login_style.css' type='text/css' rel='stylesheet' />
-		<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
+		<header>
+			<title>Amazion</title>
+			<link href='login_style.css' type='text/css' rel='stylesheet' />
+			<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
+
+			<nav>
+			    <ol>
+			        <li>Home</li>
+			        <li>Shopping Cart</li>
+			        <li>Wishlist</li>
+			    </ol>
+			</nav>
+		</header>
 	</head>
 
 	<body>
@@ -50,7 +60,7 @@ session_start();
      			<div id="dragdiv" ondrop="drop(event)">
      				<table border="1" draggable="true" id="t1" ondragstart="drag(event)">
 					<tr>
-						<!-- <td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td>  -->
+						<td><?php echo '<img src="', $dir, '/', $row["Photo"], '" alt="Photo" width="200" height="150" />';?></td>
 					</tr>
 					<tr>
 						<td colspan="2"><?php echo $row["MODEL"];?></td>

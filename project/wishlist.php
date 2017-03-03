@@ -3,13 +3,26 @@ session_start();
 ?>
 <html>
 	<head>
-		<title>Amazion Wishlist</title>
-		<link href='css/login_style.css' type='text/css' rel='stylesheet' />
-		<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
+			<title>Amazion Wishlist</title>
+			<link href='login_style.css' type='text/css' rel='stylesheet' />
+			<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
 	</head>
 
-	<body>
+
+	<header>
 		<h1>Amazion</h1>
+			<nav>
+			    <ol>
+			        <li>Home</li>
+			        <li>Shopping Cart</li>
+			        <li>Wishlist</li>
+			    </ol>
+			</nav>
+		</header>
+
+
+		
+		<body>
 		<form id='logout' method="LINK" action="index.php">
 			<input type="submit" value="Log Out">
 		</form>

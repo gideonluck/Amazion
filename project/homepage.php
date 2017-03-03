@@ -72,9 +72,11 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 	
 ?>
 <head>
+
 	<title>Amazion</title>
-	<link href='css/login_style.css' type='text/css' rel='stylesheet' />
+	<link href='login_style.css' type='text/css' rel='stylesheet' />
 	<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" />
+
 	<script>
 	    function allowDrop(ev) {
 	      ev.preventDefault();
@@ -92,19 +94,27 @@ INSERT INTO `items` (`SKU`, `MODEL`, `Vendor`, `Type`, `Description`, `Photo`) V
 			$.ajax({
                 url: "update.php",
                 type: "POST",
-                data: { 'name': $_SESSION['user'], 'SKU': $row[SKU] },                   
+                data: { 'id': $_SESSION['id'], 'SKU': $row[SKU] },                   
                 .done(function() {
 		                	alert("Item added to Cart");             
 		                })
 				});
 	    }
 	</script>
-
 </head>
-<body>
 
+
+<header>
 	<h1>Amazion</h1>
-
+	<nav>
+        <ol>
+            <li>Home</li>
+            <li></li>
+            <li>Wishlist</li>
+        </ol>
+    </nav>
+</header>
+<body>
 	<div id = "ShopCart" ondrop="drop(event)" ondragover="allowDrop(event)">
 		<p id="CartText"> Shopping cart </p>
 	</div>
